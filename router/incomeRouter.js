@@ -7,6 +7,7 @@ router
   .post(controller.investmentIncome)
   .get(controller.getAllInvestmentIncome);
 router.route('/getTotalSummary/:year').get(controller.getTotalSummary);
+router.route('/:id').patch(controller.updateIncome);
 router
   .route('/getTotalSummaryByDateEachHunter')
   .get(controller.getTotalAmountbyDate);

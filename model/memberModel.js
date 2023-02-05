@@ -1,6 +1,6 @@
 const { triggerAsyncId } = require('async_hooks');
 const mongoose = require('mongoose');
-const validator = require('validator');
+const validator = require('mongoose-validators');
 
 const Schema = new mongoose.Schema({
   nameLastname: {
@@ -19,10 +19,10 @@ const Schema = new mongoose.Schema({
   },
   status: {
     type: String,
-    // require: true,
     enum: {
       values: ['ใช้งานแล้ว', 'โดนดึงรอเคลม', 'พร้อมใช้งาน'],
     },
+    default: 'ใช้งานแล้ว',
     trim: true,
   },
   agency: {
@@ -36,6 +36,7 @@ const Schema = new mongoose.Schema({
         'น้องทราย',
         'รับมาก่อนหน้านี้',
         'ปู',
+        'ขนมหวาน',
       ],
     },
     trim: true,

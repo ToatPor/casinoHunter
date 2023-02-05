@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const validator = require('validator');
+const validator = require('mongoose-validators');
 
 const incomerScheme = new mongoose.Schema({
   hunterName: {
@@ -11,7 +11,7 @@ const incomerScheme = new mongoose.Schema({
   investment: {
     type: Number,
     require: true,
-    validatte: [
+    validate: [
       validator.isNumeric,
       'input is not valid please fill number only',
     ],
@@ -21,7 +21,7 @@ const incomerScheme = new mongoose.Schema({
   income: {
     type: Number,
     require: true,
-    validatte: [
+    validate: [
       validator.isNumeric,
       'input is not valid please fill number only',
     ],

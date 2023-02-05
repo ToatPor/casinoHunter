@@ -144,13 +144,10 @@ exports.gameForHunter = catchAsync(async (req, res, next) => {
   const hunterIncome = await Income.aggregate([
     {
       $match: {
-        $or: [
-          { hunterName: 'อ้วน' },
-          { hunterName: 'เฟิร์น' },
-          { hunterName: 'แม็ก' },
-          { hunterName: 'เบล' },
-          { hunterName: 'เกซ' },
-        ],
+        date: {
+          $gte: new Date(`${year}-${month}-01`),
+          $lte: new Date(`${year}-${month}-31`),
+        },
       },
     },
     {
@@ -169,9 +166,28 @@ exports.gameForHunter = catchAsync(async (req, res, next) => {
         netIncome: { $subtract: ['$totalIncome', '$totalInvestment'] },
       },
     },
+    {
+      $sort: { netIncome: -1 },
+    },
   ]);
 
   res.status(200).json({
     data: { hunterIncome },
+  });
+});
+
+exports.updateIncome = catchAsync(async (req, res, next) => {
+  const incomeUpdate = await Income.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+    runValidators: true,
+  });
+
+  if (!incomeUpdate) {
+    return new appError("can't find id please check", 404);
+  }
+
+  res.status(200).json({
+    status: 'Success',
+    data: { incomeUpdate },
   });
 });
