@@ -1,0 +1,27 @@
+.navigator_Page {
+  background-color: $color_primary;
+  grid-column: sidebar_start / sidebar_end;
+  grid-row: 1/-1;
+  justify-content: center;
+  z-index: -1;
+  padding: 3.2rem;
+
+  &_list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 2rem;
+    color: white;
+    list-style: none;
+    position: relative;
+    padding-top: 1.2rem;
+  }
+
+  &_icon {
+    cursor: pointer;
+    display: inline-block;
+    width: 3.2rem;
+    height: 3.2rem;
+    fill: white;
+  }
+}

@@ -1,0 +1,27 @@
+.member {
+  grid-column: col_start/-1;
+  height: 100vh;
+  background-color: white;
+  border-top-left-radius: 20px;
+  box-shadow: 0 0 5px rgb(78, 78, 78);
+  margin-left: -3.2rem;
+  padding: 7rem;
+
+  &_box {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &_register {
+    &-btn {
+      font-family: 'Prompt', sans-serif;
+      display: inline-block;
+      border: none;
+      padding: 1.5rem 3.2rem;
+      border-radius: 100rem;
+      background-color: $color_btn;
+      color: white;
+      font-weight: 500;
+    }
+  }
+}

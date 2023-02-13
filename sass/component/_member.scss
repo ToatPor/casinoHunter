@@ -1,0 +1,32 @@
+.member_Page {
+  height: 100vh;
+  background-color: $color_grey_light;
+  grid-column: full_start/ col_start;
+  display: flex;
+  justify-content: center;
+
+  &_box {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.2rem;
+    text-align: center;
+    padding: 4.8rem 1.6rem;
+  }
+
+  &_link {
+    text-decoration: none;
+
+    &:link,
+    &:visited {
+      display: inline-block;
+      color: $color_black;
+      transition: all 0.3s;
+    }
+
+    &:hover,
+    &:active {
+      color: $color_grey_light-2;
+      transform: translateY(-0.2rem);
+    }
+  }
+}

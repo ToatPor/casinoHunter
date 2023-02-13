@@ -8,3 +8,11 @@ exports.addMistake = catchAsync(async (req, res, next) => {
     data: { createMistake },
   });
 });
+
+exports.getMistake = catchAsync(async (req, res, next) => {
+  const dataMistake = await mistakeModel.find();
+  res.status(200).json({
+    status: 'Success',
+    data: { dataMistake },
+  });
+});

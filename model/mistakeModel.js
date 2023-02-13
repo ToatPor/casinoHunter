@@ -1,22 +1,19 @@
 const mongoose = require('mongoose');
-const validator = require('mongoose-validators');
+const validator = require('validator');
 
 const mistakeSchema = new mongoose.Schema({
-  hunterName: {
-    type: String,
-    validate: [validator.isAlpha, 'Please fill only letter'],
-    enum: { values: ['max', 'grace', 'bell', 'fat', 'fern'] },
-    require: true,
-    trim: true,
-  },
   valueMistake: {
     type: Number,
-    validate: [validator.isNumeric, 'Please fill only number'],
     require: true,
   },
   describe: {
     type: String,
-    validate: [validator.isAlpha, 'Please fill only letter'],
+    validate: {
+      validator: function (val) {
+        return validator.isAlpha(val, ['th-TH']);
+      },
+    },
+    message: 'Should contain only letter',
   },
   createDate: {
     type: Date,

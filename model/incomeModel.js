@@ -1,30 +1,21 @@
 const mongoose = require('mongoose');
-const validator = require('mongoose-validators');
+const validator = require('validator');
 
 const incomerScheme = new mongoose.Schema({
   hunterName: {
     type: String,
     require: true,
     trim: true,
-    enum: ['อ้วน', 'เฟิร์น', 'เบล', 'แม็ก', 'เกซ'],
+    enum: ['อ้วน', 'เฟิร์น', 'เบล', 'แม็ก', 'เกซ', 'ท็อป'],
   },
   investment: {
     type: Number,
-    require: true,
-    validate: [
-      validator.isNumeric,
-      'input is not valid please fill number only',
-    ],
     require: true,
   },
 
   income: {
     type: Number,
     require: true,
-    validate: [
-      validator.isNumeric,
-      'input is not valid please fill number only',
-    ],
     require: true,
   },
   date: {
