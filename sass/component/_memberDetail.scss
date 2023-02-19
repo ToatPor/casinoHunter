@@ -10,6 +10,7 @@
   &_box {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 4.2rem;
   }
 
   &_register {
@@ -24,4 +25,35 @@
       font-weight: 500;
     }
   }
+
+  &_detail {
+    width: 100%;
+    color: white;
+    font-size: 1.6rem;
+    font-weight: 500;
+
+    &--header {
+      background-color: $color_primary;
+    }
+    &--head {
+      width: 25%;
+      padding: 0.8rem 0;
+    }
+
+    &--body {
+      color: $color_primary;
+      text-align: center;
+      width: 25%;
+      padding: 0.8rem 0;
+    }
+    &-body--row:nth-child(even) {
+      background-color: $color_grey_light;
+    }
+  }
+}
+
+table,
+th,
+td {
+  border-collapse: collapse;
 }

@@ -30,7 +30,7 @@ const Schema = new mongoose.Schema({
     default: 'รับมาก่อนหน้านี้',
     enum: {
       values: [
-        'อรทัย',
+        'areerat',
         'เหน๋อ',
         'น้องทราย',
         'รับมาก่อนหน้านี้',

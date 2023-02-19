@@ -191,3 +191,18 @@ exports.updateIncome = catchAsync(async (req, res, next) => {
     data: { incomeUpdate },
   });
 });
+
+exports.getByHunter = catchAsync(async (req, res, next) => {
+  const { hunter } = req.params;
+  const data = await Income.find({ hunterName: hunter });
+  const test = JSON.parse(data);
+  // test.forEach(
+  //   (el, i) => (el.incomeHunter = el.income > 0 ? el.income - el.investment : 0)
+  // );
+
+  console.log(test);
+  res.status(200).json({
+    status: 'Success',
+    hunerData: { data },
+  });
+});
