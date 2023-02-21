@@ -4,6 +4,8 @@ const memberRouter = require('./router/memberRouter');
 const incomeRouter = require('./router/incomeRouter');
 const controlError = require('./controller/errorController');
 const mistakeRouter = require('./router/mistakeRouter');
+const expenseRouter = require('./router/expenseRouter');
+
 const error = require('./utilities/appError');
 
 const app = express();
@@ -13,6 +15,7 @@ app.use(express.json({ limit: '10kb' }));
 app.use('/api/member', memberRouter);
 app.use('/api/income', incomeRouter);
 app.use('/api/mistake', mistakeRouter);
+app.use('/api/expense', expenseRouter);
 
 app.all('*', (req, res, next) => {
   next(
