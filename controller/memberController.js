@@ -20,7 +20,9 @@ exports.createMember = catchAsync(async (req, res) => {
 
 exports.deleteMember = catchAsync(async (req, res, next) => {
   const member = await memberModel.findByIdAndDelete(req.params.id);
-
+  if (!member) {
+    return next(new appError('this id does not exist', 400));
+  }
   res.status(204).json({
     status: 'Success',
     data: null,
@@ -28,11 +30,17 @@ exports.deleteMember = catchAsync(async (req, res, next) => {
 });
 
 exports.updateMember = catchAsync(async (req, res, next) => {
-  const number = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   const data = req.body;
-  data.nameLastname = data.nameLastname.trim().split(' ').join(' ');
-  const checkUsername = number.some((el) => data.nameLastname.includes(el));
-  if (checkUsername) return;
+  if (req.body.nameLastname) {
+    const number = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    data.nameLastname = data.nameLastname.trim().split(' ').join(' ');
+    const checkUsername = number.some((el) => data.nameLastname.includes(el));
+
+    if (checkUsername)
+      return next(
+        new appError('namme last name should not include number', 400)
+      );
+  }
 
   const member = await memberModel.findByIdAndUpdate(req.params.id, data, {
     new: true,

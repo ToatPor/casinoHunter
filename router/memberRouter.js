@@ -4,6 +4,7 @@ const router = express.Router();
 
 router.route('/').get(controller.getAllMember).post(controller.createMember);
 router.route('/getBydate').get(controller.getBydate);
+
 router
   .route('/:id')
   .delete(controller.deleteMember)

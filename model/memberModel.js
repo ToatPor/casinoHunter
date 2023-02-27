@@ -31,6 +31,7 @@ const Schema = new mongoose.Schema({
     enum: {
       values: [
         'areerat',
+        'นายน้อย',
         'เหน๋อ',
         'น้องทราย',
         'รับมาก่อนหน้านี้',

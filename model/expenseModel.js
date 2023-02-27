@@ -13,11 +13,15 @@ const expenseSchema = new mongoose.Schema({
       message: 'Should contain only number',
     },
   },
-
   categories: {
     type: String,
     enum: ['account', 'salary', 'utilities', 'rent', 'program', 'unlucky'],
     require: true,
+  },
+
+  date: {
+    type: Date,
+    default: Date.now(),
   },
 });
 
